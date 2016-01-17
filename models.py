@@ -13,6 +13,7 @@ class Candidate(models.Model):
 
 
 class MultipleChoice(models.Model):
+    id = types.LongType()
     choice = types.StringType()
 
 
