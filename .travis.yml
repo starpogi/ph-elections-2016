@@ -4,7 +4,6 @@ python:
   - "pypy"
 # command to install dependencies
 install:
-  - pip install .
   - pip install -r tools/requirements.txt
 # command to run tests
 script: nosetests -v
