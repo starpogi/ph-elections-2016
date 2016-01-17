@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+- Page Not Found!
+{% endblock %}
+
+{% block content %}
+Womp! The page you are looking for does not exist.
+
+<a href="{{ url_for('base_app.index') }}">Bring me back!</a>
+{% endblock %}
