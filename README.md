@@ -1,4 +1,6 @@
 # Which Philippine Presidential Candidate Are You
+[![Build Status](https://travis-ci.org/starpogi/ph-elections-2016.svg?branch=master)](https://travis-ci.org/starpogi/ph-elections-2016)
+
 Simple quiz to figure out which 2016 Presidential Candidate are you.
 
 ## Environment setup
