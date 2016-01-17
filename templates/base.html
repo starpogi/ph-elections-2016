@@ -3,14 +3,45 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Which President Are You{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" />
   {% block external_css %}{% endblock %}
   {% block external_js_top %}{% endblock %}
 </head>
 
 <body>
-  {% block content %}{% endblock %}
+  <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Which President Are You?</h3>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            {% block content %}{% endblock %}
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 </body>
-  {% block external_js_bottom %}{% endblock %}
+{% block external_js_bottom %}{% endblock %}
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}" type="text/js" />
 
 </html>

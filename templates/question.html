@@ -8,18 +8,17 @@
 <h2>#{{ index }}: {{ question }}</h2>
 
 {% for choice in choices %}
-    <p>
-      <input type="radio"
-             name="choices"
-             id="{{ choice.id}}"
-             value="{{ choice.id }}">
-        <label for="{{ choice.id }}">
-          {{ choice.choice }}
-        </label>
-      </input>
-    </p>
+  <label for="{{ choice.id }}">
+    <input type="radio"
+         name="choices"
+         id="{{ choice.id}}"
+         value="{{ choice.id }}" />
+    <i></i> <span>{{ choice.choice }}</span>
+  </label>
+  <br />
 {% endfor %}
-<button type="submit">Next</button>
+<br />
+<button class="btn btn-success" type="submit">Next</button>
 </form>
 
 {% endblock %}

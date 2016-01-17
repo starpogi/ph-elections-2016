@@ -74,4 +74,4 @@ def set_choice(qid=None):
 
 @base_app.route("/done")
 def done():
-    return "Hoorah!"
+    return render_template("done.html")
