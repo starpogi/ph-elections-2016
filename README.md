@@ -26,3 +26,12 @@ For live deployment, Heroku will take care of spinning up the web server.
 To add more module dependencies, modify `tools/requirements.txt`. Add the version
 when you can so that you can stick with the version that works with your current
 program. If not, a new module version might break your code.
+
+## Testing
+To run unit tests, do
+
+```
+$ nosetests
+```
+
+at the root directory. This repo is also connected to Travis CI

@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import render_template
-import views
+import views.base
 
 app = Flask(__name__)
-app.register_blueprint(views.base_app)
+app.register_blueprint(views.base.base_app)
 
 @app.errorhandler(404)
 def not_found(e):

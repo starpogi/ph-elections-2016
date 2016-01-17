@@ -1,26 +1,25 @@
 import collections
-import models
-import uuid
+import models.base
 
 base_questions = collections.OrderedDict([
-    ('first-time-rocker', models.Question({
+    ('first-time-rocker', models.base.Question({
         "question": "Are you a rocker?",
         "choices": [
-            models.MultipleChoice({
+            models.base.MultipleChoice({
                 "choice": "Yes"
             }),
-            models.MultipleChoice({
+            models.base.MultipleChoice({
                 "choice": "No"
             })
         ]
     })),
-    ('question-2', models.Question({
+    ('question-2', models.base.Question({
         "question": "Are you also?",
         "choices": [
-            models.MultipleChoice({
+            models.base.MultipleChoice({
                 "choice": "Maybe"
             }),
-            models.MultipleChoice({
+            models.base.MultipleChoice({
                 "choice": "No"
             })
         ]

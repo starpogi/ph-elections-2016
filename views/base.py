@@ -6,23 +6,21 @@ from flask import render_template
 from flask import abort
 from flask import redirect
 
-import services
-import views
-import data
+import services.questions
 
 base_app = Blueprint('base_app', __name__)
 
 @base_app.route("/")
 def index():
     variables = {
-        "questions": services.get_questions()
+        "questions": services.questions.get_questions()
     }
 
     return render_template("index.html", **variables)
 
 @base_app.route("/start")
 def start():
-    questions = services.get_questions()
+    questions = services.questions.get_questions()
 
     if not questions:
         abort(404)
@@ -31,7 +29,7 @@ def start():
 
 @base_app.route("/question/<qid>", methods=['GET'])
 def ask_question(qid=None):
-    question = services.get_question(qid)
+    question = services.questions.get_question(qid)
 
     if question is None:
         abort(404)
@@ -39,14 +37,14 @@ def ask_question(qid=None):
     variables = question.to_primitive()
     variables.update({
         "qid": qid,
-        "index": services.get_index(qid) + 1
+        "index": services.questions.get_index(qid) + 1
     })
 
     return render_template("question.html", **variables)
 
 @base_app.route("/question/<qid>", methods=['POST'])
 def set_choice(qid=None):
-    question = services.get_question(qid)
+    question = services.questions.get_question(qid)
 
     if question is None:
         abort(404)
@@ -56,15 +54,15 @@ def set_choice(qid=None):
     if selected_choice_id is None:
         return redirect("/question/{qid}".format(qid=qid))
 
-    selected_choice = services.get_selected_choice(selected_choice_id, question)
+    selected_choice = services.questions.get_selected_choice(selected_choice_id, question)
 
     if selected_choice is None:
         return redirect("/question/{qid}".format(qid=qid))
 
-    services.set_choice(qid, selected_choice)
+    services.questions.set_choice(qid, selected_choice)
 
     try:
-        next_qid = services.get_next_question(qid)
+        next_qid = services.questions.get_next_question(qid)
     except IndexError:
         return redirect("/done")
     except ValueError:

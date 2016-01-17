@@ -1,15 +1,15 @@
+import models.extended_types as extended_types
+import data.candidates
+
 from schematics import models
 from schematics import types
 from schematics.types import compound
-import extended_types
-
-import data
 
 
 class Candidate(models.Model):
     name = types.StringType()
     image = types.URLType()
-    gender = extended_types.EnumType(data.Genders)
+    gender = extended_types.EnumType(data.candidates.Genders)
 
 
 class MultipleChoice(models.Model):

@@ -1,15 +1,15 @@
-import questions
+import data.questions
 
-def get_questions():
+def get_questions(question_list=data.questions.base_questions):
     """
     Gets all the available question ids
 
     :return: List of question keys
     :rtype: list
     """
-    return list(questions.base_questions.keys())
+    return list(question_list.keys())
 
-def get_question(qid):
+def get_question(qid, question_list=data.questions.base_questions):
     """
     Gets actual question
 
@@ -17,7 +17,7 @@ def get_question(qid):
     :return: Question Model
     :rtype: models.Question
     """
-    base_question = questions.base_questions.get(qid)
+    base_question = question_list.get(qid)
     with_index = set_ids(base_question)
 
     return with_index
@@ -31,17 +31,16 @@ def set_ids(question):
 
     return question
 
-def set_choice(qid, selected_choice):
+def set_choice(qid, selected_choice, question_list=data.questions.base_questions):
     """
     Sets the choice for a question
 
     :param qid: Question ID in the form of the base_questions key
     :param selected_choice: Choice that is selected
     """
-    questions.base_questions[qid].selected_choice = selected_choice
+    question_list[qid].selected_choice = selected_choice
 
-
-def get_next_question(qid):
+def get_next_question(qid, question_list=data.questions.base_questions):
     """
     Gets the next question
 
@@ -50,14 +49,14 @@ def get_next_question(qid):
     :rtype: string
     :raises: IndexError if at the last question
     """
-    all_questions = get_questions()
-    return all_questions[get_index(qid) + 1]
+    all_questions = get_questions(question_list=question_list)
+    return all_questions[get_index(qid, question_list=question_list) + 1]
 
-def get_index(qid):
+def get_index(qid, question_list=data.questions.base_questions):
     """
     Get index of question
     """
-    all_questions = get_questions()
+    all_questions = get_questions(question_list=question_list)
     qid_index = all_questions.index(qid)
     return qid_index
 

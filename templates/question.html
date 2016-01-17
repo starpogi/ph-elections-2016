@@ -8,17 +8,16 @@
 <h2>#{{ index }}: {{ question }}</h2>
 
 {% for choice in choices %}
-  <label for="{{ choice.id }}">
-    <input type="radio"
-         name="choices"
-         id="{{ choice.id}}"
-         value="{{ choice.id }}" />
-    <i></i> <span>{{ choice.choice }}</span>
-  </label>
-  <br />
+  <div class="md-10 btn-selector">
+    <button class="btn btn-default"
+            name="choices"
+            value="{{ choice.id }}"
+            type="submit">
+            {{ choice.choice }}
+    </button>
+  </div>
 {% endfor %}
-<br />
-<button class="btn btn-success" type="submit">Next</button>
+
 </form>
 
 {% endblock %}
